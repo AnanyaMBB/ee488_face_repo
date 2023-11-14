@@ -113,18 +113,34 @@ def main_worker(args):
     ep          = 1
 
     ## Input transformations for training
-    train_transform = transforms.Compose(
+    # train_transform = transforms.Compose(
+    #     [transforms.ToTensor(),
+    #     transforms.RandomCrop([112,112]),
+    #     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])])
+
+     train_transform = transforms.Compose(
         [transforms.ToTensor(),
-        transforms.RandomCrop([112,112]),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])])
+         transforms.Resize(256), #256
+         transforms.CenterCrop([224,224]),
+         transforms.RandomRotation(15), #random rotation added
+         #transforms.Grayscale(3),
+         transforms.RandomHorizontalFlip(p=0.5),
+         #transforms.GaussianBlur((5,5), (0.1, 2.0))])
+         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])]) #change the normalization
 
     ## Input transformations for evaluation
-    test_transform = transforms.Compose([
-        transforms.ToTensor(),
-        transforms.CenterCrop([112,112]),
-        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-    ])
+    # test_transform = transforms.Compose([
+    #     transforms.ToTensor(),
+    #     transforms.CenterCrop([112,112]),
+    #     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    # ])
 
+    test_transform = transforms.Compose(
+        [transforms.ToTensor(),
+         transforms.Resize(256),
+         transforms.CenterCrop([224,224]),
+         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])])
+         
     ## Initialise trainer and data loader
     trainLoader = get_data_loader(transform=train_transform, **vars(args));
     trainer     = ModelTrainer(model, **vars(args))
