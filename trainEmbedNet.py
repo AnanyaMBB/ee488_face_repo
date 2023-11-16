@@ -120,13 +120,12 @@ def main_worker(args):
 
     train_transform = transforms.Compose(
         [transforms.ToTensor(),
-         transforms.Resize(256), #256
+        #  transforms.Resize(256), #256
          transforms.CenterCrop([224,224]),
+         transforms.RandomPerspective(distortion_scale=0.5, probability=0.5, p=1),
          transforms.ColorJitter(brightness=(0.7, 1.5)),
          transforms.RandomRotation(15), #random rotation added
-         #transforms.Grayscale(3),
          transforms.RandomHorizontalFlip(p=0.5),
-         #transforms.GaussianBlur((5,5), (0.1, 2.0))])
          transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])])
 
     ## Input transformations for evaluation
@@ -138,7 +137,7 @@ def main_worker(args):
 
     test_transform = transforms.Compose(
         [transforms.ToTensor(),
-         transforms.Resize(256),
+        #  transforms.Resize(256),
          transforms.CenterCrop([224,224]),
          transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])])
 

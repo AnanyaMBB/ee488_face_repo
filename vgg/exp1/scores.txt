@@ -1,0 +1,10 @@
+[INFO] :: 2023-11-16 03:47:55 :: Namespace(batch_size=100, max_img_per_cls=500, nDataLoaderThread=5, test_interval=5, max_epoch=100, trainfunc='angleProto', optimizer='adam', scheduler='steplr', lr=0.001, lr_decay=0.9, weight_decay=0, margin=0.1, scale=30, nPerClass=2, nClasses=9500, initial_model='', save_path='vgg/exp1', train_path='data/vggface_train/train/', train_ext='jpg', test_path='data/val', test_list='data/val_pairs.csv', model='ResNet18', nOut=512, eval=False, output='', mixedprec=False, gpu=0)
+[INFO] :: 2023-11-16 03:47:55 :: Epoch 0001 started with LR 0.00100 
+[INFO] :: 2023-11-16 09:09:15 :: Epoch 0001 completed with TLOSS 2.24543
+[INFO] :: 2023-11-16 09:09:15 :: Epoch 0002 started with LR 0.00100 
+[INFO] :: 2023-11-16 13:34:33 :: Epoch 0002 completed with TLOSS 1.29402
+[INFO] :: 2023-11-16 13:34:33 :: Epoch 0003 started with LR 0.00100 
+[INFO] :: 2023-11-16 17:59:00 :: Epoch 0003 completed with TLOSS 1.01551
+[INFO] :: 2023-11-16 17:59:00 :: Epoch 0004 started with LR 0.00100 
+[INFO] :: 2023-11-16 22:23:42 :: Epoch 0004 completed with TLOSS 0.86830
+[INFO] :: 2023-11-16 22:23:42 :: Epoch 0005 started with LR 0.00100 
