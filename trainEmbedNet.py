@@ -120,7 +120,7 @@ def main_worker(args):
 
     train_transform = transforms.Compose(
         [transforms.ToTensor(),
-        #  transforms.Resize(256), #256
+         transforms.Resize(256), #256
          transforms.CenterCrop([224,224]),
          transforms.RandomPerspective(distortion_scale=0.5, probability=0.5, p=1),
          transforms.ColorJitter(brightness=(0.7, 1.5)),
